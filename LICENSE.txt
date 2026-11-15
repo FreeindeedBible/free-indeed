@@ -1,0 +1,10 @@
+Free Indeed: Bible with context
+Copyright (c) 2026 Daniel Ellis. All rights reserved.
+
+This app is free for everyone to use and to share, exactly as it is. It must not be sold, changed, or put out under another name.
+
+The Bible text in this app is the King James Version and the Bible in Basic English. Both are in the public domain. No words are added to the Bible text.
+
+The book notes, context notes, reading plans and the app code are copyright Daniel Ellis. They are not Scripture. Dates are approximate.
+
+The only official version is at https://freeindeedbible.github.io/free-indeed/
