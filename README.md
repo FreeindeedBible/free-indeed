@@ -7,7 +7,7 @@ A free Bible reading app with the background and context you need.
 - Full Bible: King James Version and Bible in Basic English (both public domain in the United States, where the app is hosted). No words added.
 - A short note for every book: who wrote it, when, what the world was like, why it is in the Bible.
 - "In context" notes for verses that are often taken out of context.
-- Reading plans, each with an About page and short daily readings: New to the Faith, The Gospel of John, Psalms, Proverbs, New Testament in a Year.
+- Reading plans, each with an About page and short daily readings: New to the Faith, The Gospel of John, The Gospel of Mark, Acts, Romans and Ephesians, Psalms, Proverbs, New Testament in a Year, and the Whole Bible in a Year.
 
 Free for everyone, always. Share the link as it is. Not to be sold, changed or put under another name. See LICENSE.txt.
 
@@ -18,7 +18,7 @@ Official version: https://freeindeedbible.github.io/free-indeed/
 - Today: opens on a home screen with a verse of the day (it changes every day), where you left off in your reading plan, your streak and shortcuts.
 - Text size: the Aa button makes all text larger or smaller, up to a very large size.
 - Highlights in five colours: tap a verse, pick a colour. You can also write a note.
-- Related verses: tap a verse, then Related verses, to see other places in the Bible that connect with it. Only lists of verses, no words added. Cross references from OpenBible.info (openbible.info/labs/cross-references), licensed CC BY 4.0.
+- Related verses: tap a verse, then Related verses, to see other places in the Bible that connect with it. Only lists of verses, no words added. Cross references from OpenBible.info (openbible.info/labs/cross-references), under a Creative Commons Attribution licence (CC BY).
 - Reading plans show a few "if you have time, also read" references for each day.
 - Back button: after you leave a chapter, a "Back to where you were" bar returns you to your place.
 - Bible text checked verse by verse (15 Nov 2026): stray margin notes removed from 41 KJV verses, psalm titles and Psalm 119 headings added, Psalm 76 numbering fixed in the Simple English version.
