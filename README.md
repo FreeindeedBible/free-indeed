@@ -15,6 +15,10 @@ Official version: https://freeindeedbible.github.io/free-indeed/
 
 - A map of Bible places: open the Map button while reading any chapter that names a place, or see The story, then Where it happened. Each place shows its name in the Bible and its name today.
 
-- Text size: the Aa button makes all text larger or smaller.
+- Today: opens on a home screen with a verse of the day (it changes every day), where you left off in your reading plan, your streak and shortcuts.
+- Text size: the Aa button makes all text larger or smaller, up to a very large size.
+- Highlights in five colours: tap a verse, pick a colour. You can also write a note.
+- Related verses: tap a verse, then Related verses, to see other places in the Bible that connect with it. Only lists of verses, no words added. Cross references from OpenBible.info (openbible.info/labs/cross-references), licensed CC BY 4.0.
+- Reading plans show a few "if you have time, also read" references for each day.
 - Back button: after you leave a chapter, a "Back to where you were" bar returns you to your place.
 - Bible text checked verse by verse (15 Nov 2026): stray margin notes removed from 41 KJV verses, psalm titles and Psalm 119 headings added, Psalm 76 numbering fixed in the Simple English version.
