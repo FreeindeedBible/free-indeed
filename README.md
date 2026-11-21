@@ -5,7 +5,7 @@ A free Bible reading app with the background and context you need.
 "If the Son therefore shall make you free, ye shall be free indeed." John 8:36
 
 - Full Bible: King James Version and Bible in Basic English (both public domain in the United States, where the app is hosted). No words added.
-- A short note for every book: who wrote it, when, what the world was like, why it is in the Bible.
+- A short note for every book: who wrote it, when, what the world was like, why it is in the Bible. Its "Where to start" line has a button for each suggested chapter, so you can jump straight there.
 - "In context" notes for verses that are often taken out of context.
 - Reading plans, each with an About page and short daily readings: New to the Faith, The Gospel of John, The Gospel of Mark, Acts, Romans and Ephesians, Psalms, Proverbs, New Testament in a Year, and the Whole Bible in a Year.
 
