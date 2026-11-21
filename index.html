@@ -690,7 +690,9 @@ function passLabel(T,p){const n=NOTES[p.b].n,last=T[p.b][p.c2].length-1;
   return n+" "+(p.c+1)+":"+(p.s+1)+(p.e>p.s?" to "+(p.e+1):"")}
 function rPassage(T){
   const p=S.pas,n=NOTES[p.b].n;CHAPMAP=false;
-  let h='<div class="chips"><button class="chip" data-act="chapters">&#8592; '+esc(n)+'</button>'+
+  let h='';const f=p.from;
+  if(f){const pl=f.t==="plan"?planById(f.pid):null;h+='<div class="ctxc" style="border-left-color:var(--acc);cursor:pointer" data-act="pasback"><b class="t" style="color:var(--acc)">&#8592; '+(pl?'Back to the plan: '+esc(pl.name)+', Day '+f.pday:'Back to where you were: '+esc(f.pas?passLabel(T,f.pas):ref(f.b,f.c)))+'</b></div>'}
+  h+='<div class="chips"><button class="chip" data-act="chapters">&#8592; '+esc(n)+'</button>'+
    ['kjv','bbe'].map(v=>'<button class="chip'+(S.ver===v?" on":"")+'" data-act="ver" data-v="'+v+'">'+(v==="kjv"?"King James":"Simple English")+'</button>').join("")+'</div>';
   h+='<div class="ctxc" style="border-left-color:var(--acc)"><b class="t" style="color:var(--acc)">Reading: '+esc(passLabel(T,p))+'</b></div>';
   h+='<div class="scr">';
@@ -1157,7 +1159,8 @@ document.addEventListener("click",async e=>{
   else if(a==="books"){S.view="books";render()}
   else if(a==="ctxlist"){S.view="ctxlist";render();window.scrollTo(0,0)}
   else if(a==="chapters"){S.view="chapters";render()}
-  else if(a==="pas"){closeSheet();S.tab="read";ST.set("tab","read");S.sess=null;S.b=+el.dataset.b;S.c=+el.dataset.c;const d=el.dataset;S.pas={b:S.b,c:S.c,c2:d.c2!=null?+d.c2:S.c,s:d.s!=null?+d.s:null,e:d.e!=null?+d.e:null};S.view="chapter";await render();window.scrollTo(0,0)}
+  else if(a==="pas"){closeSheet();const fr=(S.tab==="plans"&&S.pv==="day"&&S.pid)?{t:"plan",pid:S.pid,pday:S.pday}:(S.tab==="read"&&S.view==="chapter")?{t:"ch",b:S.b,c:S.c,y:Math.round(window.scrollY),sess:S.sess?Object.assign({},S.sess):null,pas:S.pas?Object.assign({},S.pas):null}:null;S.tab="read";ST.set("tab","read");S.sess=null;S.b=+el.dataset.b;S.c=+el.dataset.c;const d=el.dataset;S.pas={b:S.b,c:S.c,c2:d.c2!=null?+d.c2:S.c,s:d.s!=null?+d.s:null,e:d.e!=null?+d.e:null,from:fr};S.view="chapter";await render();window.scrollTo(0,0)}
+  else if(a==="pasback"){const f=S.pas&&S.pas.from;if(!f)return;S.foc=null;if(f.t==="plan"){S.pas=null;S.pid=f.pid;S.pday=f.pday;S.pv="day";S.tab="plans";ST.set("tab","plans");S.sess=null;await render();window.scrollTo(0,0)}else{S.b=f.b;S.c=f.c;S.sess=f.sess;S.pas=f.pas;S.view="chapter";S.tab="read";await render();window.scrollTo(0,f.y||0)}}
   else if(a==="paswhole"){const p=S.pas;S.pas=null;S.foc=p&&p.s!=null?{c:p.c,s:p.s,e:p.e}:null;S.c=p?p.c:S.c;await render();const f=document.querySelector(".v.foc");if(f)f.scrollIntoView({block:"center"});else window.scrollTo(0,0)}
   else if(a==="chap"){S.pas=null;S.foc=null;S.c=+el.dataset.c;S.view="chapter";render();window.scrollTo(0,0)}
   else if(a==="goto"){S.tab="read";ST.set("tab","read");S.b=+el.dataset.b;S.view="chapters";await load(S.ver);CH_COUNT=CH_COUNT||TXT[S.ver].map(b=>b.length);render();window.scrollTo(0,0)}
