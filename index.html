@@ -1186,6 +1186,8 @@ function rMine(){
   const doneN=Object.keys(S.done).length;
   h+='<div class="card"><b>Chapters opened: '+doneN+' of 1,189</b><div class="mute">Verses learned: '+Object.keys(S.lrn).length+'</div><div class="mute">Reading streak: '+streak()+' day'+(streak()===1?"":"s")+'</div>'+PLANS.map(p=>{const n=Object.keys(pDone(p.id)).length;return n?'<div class="mute">'+esc(p.name)+': '+n+' of '+p.days.length+' days done</div>':''}).join("")+'</div>';
   h+='<div class="row"><button class="btn" data-act="copyall">Copy all</button></div><div style="height:10px"></div>';
+  const lb=ST.get("lastbk",null);
+  h+='<div class="card"><b>Backup and restore</b><p class="mute" style="margin:6px 0">Your highlights, notes, reading place, plan progress and learned verses are kept on each device separately. To move them to another phone, tablet or computer, tap Save backup here, then open Mine on the other device, paste into the box and tap Restore backup. Restore adds to what is already there and does not delete anything.</p><div class="mute">'+(lb?'Last backup saved on this device: '+esc(lb):'No backup saved yet on this device.')+'</div><div class="row" style="margin-top:8px"><button class="btn pri" data-act="savebk">Save backup</button></div><textarea id="rb" placeholder="Paste your backup here" style="width:100%;margin-top:8px;min-height:70px"></textarea><div class="row"><button class="btn" data-act="restorebk">Restore backup</button></div></div><div style="height:10px"></div>';
   if(!items.length)return h+'<div class="card">No highlights or notes yet. Open a chapter and tap a verse.</div>';
   items.forEach(([b,c,v])=>{
     const k=b+"."+c+"."+v;
@@ -1321,6 +1323,26 @@ document.addEventListener("click",async e=>{
   else if(a==="shareapp"){const u="https://freeindeedbible.github.io/free-indeed/",t="Free Indeed, a free Bible reading app.";if(navigator.share){try{await navigator.share({title:"Free Indeed",text:t,url:u})}catch(e){}}else copyText(t+" "+u)}
   else if(a==="copyv"){copyText(ref(S.b,S.c,cur.i)+" ("+(S.ver==="kjv"?"KJV":"BBE")+")\n"+TXT[S.ver][S.b][S.c][cur.i])}
   else if(a==="dosearch")doSearch();
+  else if(a==="savebk"){
+    const keys=["hl","nt","done","plans","log","lrn","mv","b","c","ver","rpos"],o={};
+    keys.forEach(k=>{const v=ST.get(k,null);if(v!==null)o[k]=v});
+    ST.set("lastbk",todayStr()+" at "+new Date().toTimeString().slice(0,5));
+    await copyText("FREEINDEED1:"+JSON.stringify(o));render();
+  }
+  else if(a==="restorebk"){
+    const raw=($("#rb")?$("#rb").value:"").trim(),i=raw.indexOf("FREEINDEED1:");
+    let o=null;try{if(i>=0)o=JSON.parse(raw.slice(i+12))}catch(_){}
+    if(!o||typeof o!=="object"){toast("That is not a Free Indeed backup. Paste the whole text.");return}
+    const un=(k)=>{const a=ST.get(k,{})||{},b=o[k]||{};ST.set(k,Object.assign({},a,b))};
+    ["hl","nt","done","log","lrn"].forEach(un);
+    const pa=ST.get("plans",{})||{},pb=o.plans||{},pm=Object.assign({},pa);
+    Object.keys(pb).forEach(id=>{pm[id]=Object.assign({},pa[id]||{},pb[id]||{});pm[id].done=Object.assign({},(pa[id]&&pa[id].done)||{},(pb[id]&&pb[id].done)||{})});
+    ST.set("plans",pm);
+    const ma=ST.get("mv",[])||[],mb=Array.isArray(o.mv)?o.mv:[],seen=new Set(ma.map(q=>q.join(".")));
+    ST.set("mv",ma.concat(mb.filter(q=>!seen.has(q.join(".")))));
+    ["b","c","ver","rpos"].forEach(k=>{if(k in o)ST.set(k,o[k])});
+    toast("Restored");setTimeout(()=>location.reload(),700);
+  }
   else if(a==="copyall"){
     const T=await load(S.ver);
     const part=mineItems().map(([b,c,v])=>{const k=b+"."+c+"."+v;return ref(b,c,v)+(S.hl[k]?" [highlighted]":"")+"\n"+T[b][c][v]+(S.nt[k]?"\nNote: "+S.nt[k]:"")}).join("\n\n");
