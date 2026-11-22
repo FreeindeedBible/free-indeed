@@ -1182,12 +1182,12 @@ function mineItems(){
 }
 function rMine(){
   const items=mineItems();
-  let h='<h2>My highlights and notes</h2><p class="mute">These are saved on this phone only. If you clear your browser data or change phones they are lost, so use Copy all to keep a backup somewhere. It copies your highlights, notes and progress.</p>';
+  let h='<h2>My highlights and notes</h2><p class="mute">These are saved on this device only. If you clear your browser data or change devices they are lost, so use Save below to keep a copy.</p>';
   const doneN=Object.keys(S.done).length;
   h+='<div class="card"><b>Chapters opened: '+doneN+' of 1,189</b><div class="mute">Verses learned: '+Object.keys(S.lrn).length+'</div><div class="mute">Reading streak: '+streak()+' day'+(streak()===1?"":"s")+'</div>'+PLANS.map(p=>{const n=Object.keys(pDone(p.id)).length;return n?'<div class="mute">'+esc(p.name)+': '+n+' of '+p.days.length+' days done</div>':''}).join("")+'</div>';
-  h+='<div class="row"><button class="btn" data-act="copyall">Copy all</button></div><div style="height:10px"></div>';
+  h+='<div class="row"><button class="btn" data-act="copyall">Copy as readable text</button></div><div class="mute" style="margin:6px 0 0">This copies a list you can read or keep in notes. It cannot be restored. To move your progress to another device, use Save and Restore below.</div><div style="height:10px"></div>';
   const lb=ST.get("lastbk",null);
-  h+='<div class="card"><b>Backup and restore</b><p class="mute" style="margin:6px 0">Your highlights, notes, reading place, plan progress and learned verses are kept on each device separately. To move them to another phone, tablet or computer, tap Save backup here, then open Mine on the other device, paste into the box and tap Restore backup. Restore adds to what is already there and does not delete anything.</p><div class="mute">'+(lb?'Last backup saved on this device: '+esc(lb):'No backup saved yet on this device.')+'</div><div class="row" style="margin-top:8px"><button class="btn pri" data-act="savebk">Save backup</button></div><textarea id="rb" placeholder="Paste your backup here" style="width:100%;margin-top:8px;min-height:70px"></textarea><div class="row"><button class="btn" data-act="restorebk">Restore backup</button></div></div><div style="height:10px"></div>';
+  h+='<div class="card"><b>Save and restore</b><p class="mute" style="margin:6px 0">Tap <b>Save</b> to copy your progress. Send it to your other device (WhatsApp to yourself works well), copy it there, open Mine and tap <b>Restore</b>. Restore adds to what is there and deletes nothing.</p><div class="mute">'+(lb?'Last saved on this device: '+esc(lb):'Not saved yet on this device.')+'</div><div class="row" style="margin-top:8px"><button class="btn pri" data-act="savebk" style="margin-right:10px">Save</button><button class="btn pri" data-act="restorebk">Restore</button></div><textarea id="rb" placeholder="Paste the saved text here, then tap Restore" style="display:none;width:100%;margin-top:8px;min-height:70px"></textarea></div><div style="height:10px"></div>';
   if(!items.length)return h+'<div class="card">No highlights or notes yet. Open a chapter and tap a verse.</div>';
   items.forEach(([b,c,v])=>{
     const k=b+"."+c+"."+v;
@@ -1327,12 +1327,21 @@ document.addEventListener("click",async e=>{
     const keys=["hl","nt","done","plans","log","lrn","mv","b","c","ver","rpos"],o={};
     keys.forEach(k=>{const v=ST.get(k,null);if(v!==null)o[k]=v});
     ST.set("lastbk",todayStr()+" at "+new Date().toTimeString().slice(0,5));
-    await copyText("FREEINDEED1:"+JSON.stringify(o));render();
+    await copyText("FREEINDEED1:"+JSON.stringify(o));toast("Saved. Now send it to your other device and tap Restore there.");render();
   }
   else if(a==="restorebk"){
-    const raw=($("#rb")?$("#rb").value:"").trim(),i=raw.indexOf("FREEINDEED1:");
-    let o=null;try{if(i>=0)o=JSON.parse(raw.slice(i+12))}catch(_){}
-    if(!o||typeof o!=="object"){toast("That is not a Free Indeed backup. Paste the whole text.");return}
+    const box=$("#rb");let raw=box?box.value.trim():"";
+    if(!raw){try{raw=(await navigator.clipboard.readText()||"").trim()}catch(_){}}
+    let o=null;
+    const i=raw.indexOf("FREEINDEED1:");
+    if(i>=0){let t=raw.slice(i+12).trim();
+      try{if(/%7B|%22/i.test(t))t=decodeURIComponent(t)}catch(_){}
+      t=t.slice(0,t.lastIndexOf("}")+1);
+      try{o=JSON.parse(t)}catch(_){}}
+    if(!o||typeof o!=="object"){
+      if(box)box.style.display="block";
+      toast(raw?"That text is not a saved backup. Copy the whole saved text, then tap Restore.":"Nothing to restore yet. Copy the saved text first, then tap Restore. Or paste it in the box.");
+      return}
     const un=(k)=>{const a=ST.get(k,{})||{},b=o[k]||{};ST.set(k,Object.assign({},a,b))};
     ["hl","nt","done","log","lrn"].forEach(un);
     const pa=ST.get("plans",{})||{},pb=o.plans||{},pm=Object.assign({},pa);
