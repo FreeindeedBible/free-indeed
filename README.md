@@ -24,3 +24,5 @@ Official version: https://freeindeedbible.github.io/free-indeed/
 - Bible text checked verse by verse (15 Nov 2026): stray margin notes removed from 41 KJV verses, psalm titles and Psalm 119 headings added, Psalm 76 numbering fixed in the Simple English version.
 - Each reading plan has its own calm colour on its card and day screens, so it is easy to find.
 - The maps now sit on real terrain (hills, valleys and sea depth) from Natural Earth, which is public domain, with accurate lake and river outlines. Everything drawn on top is still only from the Bible.
+- A "New here? Start here" card sits at the top of Today until it has been opened twice. After that it lives in the Go to tiles. The six Go to tiles have soft colours.
+- The Jerusalem map has a soft, clearer look. The map footnote is updated.
