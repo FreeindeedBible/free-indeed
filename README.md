@@ -46,3 +46,4 @@ Official version: https://freeindeedbible.github.io/free-indeed/
 - "Abraham and Lot" now has a map ("Ur to Egypt" view): Ur, Haran, Shechem, Beth-el, Egypt, back by Beth-el to Hebron, with Sodom as a hollow dot (site not known, no line to it). New places: Shechem, Bethel, Hebron.
 
 - "The Exodus and the wilderness" now has a map ("Egypt to Moab" view): Goshen, Rameses, Succoth, Marah, Elim, Mount Sinai at three suggested mountains (Jebel Musa, Jebel Serbal, Jabal al-Lawz), Kadesh-barnea, Ezion-geber and Mount Nebo. No line is drawn because the route is debated, and most dots are hollow (approximate). New places have KJV-checked notes.
+- Map for "Where Jesus went": places only, no line. Sychar and Golgotha are hollow (approximate). Caesarea Philippi is at Banias.
