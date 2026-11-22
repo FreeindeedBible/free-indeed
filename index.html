@@ -1138,7 +1138,7 @@ function rPlaces(){
   PLACES.forEach(g=>{
     h+='<div class="sec">'+esc(g[0])+'</div>';
     g[1].forEach(p=>{
-      h+='<details class="pl"><summary>'+esc(p[0])+'<span>'+esc(p[1])+'</span></summary>'+namesLine(p[0])+p[2].split("\n\n").map(x=>'<p>'+esc(x)+'</p>').join("")+(ROUTES[p[0]]?'<p><button class="btn" data-act="mproute" data-r="'+esc(p[0])+'">Show this journey on the map</button></p>':'')+(p[3]?'<p class="unc">Not certain: '+esc(p[3])+'</p>':'')+'</details>';
+      h+='<details class="pl"><summary>'+esc(p[0])+'<span>'+esc(p[1])+'</span></summary>'+namesLine(p[0])+p[2].split("\n\n").map(x=>'<p>'+esc(x)+'</p>').join("")+(ROUTES[p[0]]?'<p><button class="btn pri" style="width:100%;font-weight:700;padding:13px 14px" data-act="mproute" data-r="'+esc(p[0])+'">Show this journey on the map</button></p>':'')+(p[3]?'<p class="unc">Not certain: '+esc(p[3])+'</p>':'')+'</details>';
     });
   });
   return h;
