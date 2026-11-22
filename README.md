@@ -30,3 +30,6 @@ Official version: https://freeindeedbible.github.io/free-indeed/
 - A Share Free Indeed button on the Start page opens the phone's share menu with the official link only.
 - Lakes show in a proper blue in dark mode.
 - Book and context notes reworded where they ranked books or leaned one church's way (John, Romans, Acts, Galatians, James, 2 Chronicles 7:14, Matthew 18:20 and others), so they say only what the Bible itself says.
+- Map labels no longer get a huge white halo, sit next to their own dots, and the selected place is always drawn on top. Where a label does not fit, the dot has no label. Tap it to see its name.
+- Troas added to the map (Acts 16, Acts 20, 2 Corinthians 2, 2 Timothy 4). Position checked against five sources.
+- The Dead Sea note now says the outline is today's shape.

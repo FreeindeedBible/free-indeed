@@ -387,7 +387,7 @@ const PLACES=[
 ["The Red Sea","Between Egypt and the Sinai peninsula",
 "Israel crossed a sea when they left Egypt (Exodus 14). The Bible calls it the Red Sea (Exodus 13:18; Acts 7:36). The Hebrew name behind it can also mean 'sea of reeds'.","Where the crossing happened is debated. Believers have suggested the Gulf of Suez or lakes and marshes further north."],
 ["The Dead Sea (the Salt Sea)","Israel, the West Bank and Jordan",
-"Called the Salt Sea in Genesis 14:3. It is the lowest place on dry land, over 400 m (about 1,300 feet) below sea level, and too salty for fish to live in. The Jordan river runs into it."],
+"Called the Salt Sea in Genesis 14:3. It is the lowest place on dry land, over 400 m (about 1,300 feet) below sea level, and too salty for fish to live in. The Jordan river runs into it. The outline on the map is the sea as it is today. Its water level has been falling in recent decades, so its shape in Bible times was not exactly the same."],
 ["The Jordan river","Israel, the West Bank and Jordan",
 "It flows from the north through the Sea of Galilee and down to the Dead Sea. Israel crossed it into the promised land (Joshua 3), Naaman washed in it (2 Kings 5), and Jesus was baptised in it (Mark 1:9)."]
 ]],
@@ -456,6 +456,8 @@ const PLACES=[
 "Ephesus, Smyrna, Pergamum, Thyatira, Sardis, Philadelphia and Laodicea (Revelation 1:11). Today these are near Selçuk, Izmir, Bergama, Akhisar, Sart, Alaşehir and Denizli."],
 ["Patmos","A small Greek island in the Aegean Sea",
 "Where John was when he received the visions of Revelation (Revelation 1:9)."],
+["Troas","Near the village of Dalyan, north-west Turkey",
+"Paul came to Troas on his second journey and saw a vision in the night of a man of Macedonia asking for help (Acts 16:8 to 10). On a later visit he stayed seven days, and a young man named Eutychus fell from a window while Paul was speaking (Acts 20:5 to 12). Troas is also named in 2 Corinthians 2:12 and 2 Timothy 4:13."],
 ["Philippi","North-east Greece",
 "The first church Acts records in Europe. Paul and Silas were held in prison here (Acts 16)."],
 ["Thessalonica","Thessaloniki, northern Greece",
@@ -512,6 +514,7 @@ const PINS=[
 ["tarsus","Tarsus",36.9177,34.8946,"t","Tarsus","Tarsus (Acts 9:11), in Cilicia","Tarsus, in Mersin province, southern Turkey. Same name today.",/\bTarsus\b/],
 ["antiochp","Antioch (Pisidia)",38.3047,31.1892,"t","Antioch in Pisidia","Antioch in Pisidia (Acts 13:14)","Ruins near Yalvac, in Isparta province, Turkey",null,{y:[[43,13],[43,14],[54,3]]}],
 ["ephesus","Ephesus",37.9411,27.3419,"t","Ephesus","Ephesus (Acts 19:1), in the province of Asia","Ruins near the town of Selcuk, western Turkey",/\bEphesus\b|\bEphesians\b/],
+["troas","Troas",39.7517,26.1586,"t","Troas","Troas (Acts 16:8)","Ruins of Alexandria Troas, near the village of Dalyan, north-west Turkey",/\bTroas\b/],
 ["smyrna","Smyrna",38.42,27.14,"t","The seven churches of Revelation","Smyrna (Revelation 1:11)","Izmir, western Turkey",/\bSmyrna\b/],
 ["pergamos","Pergamos",39.1325,27.184,"t","The seven churches of Revelation","Pergamos (Revelation 1:11)","Bergama (ancient Pergamon), western Turkey",/\bPergamos\b/],
 ["thyatira","Thyatira",38.918,27.838,"t","The seven churches of Revelation","Thyatira (Revelation 1:11; Acts 16:14)","Akhisar, western Turkey",/\bThyatira\b/],
@@ -948,18 +951,24 @@ function mapSvg(){
     if(label)labs.push({p,x,y,r,isSel,isHi});
   });
   labs.sort((a,b)=>(b.isSel?1:0)-(a.isSel?1:0));
+  const fsc=(M.view!=="jer"&&labs.length>6)?0.82:1,selOut=[];
   labs.forEach(L=>{
-    const t=L.p[1],tw=t.length*(M.view==="jer"?6.7:5.8)*u,th=12*u,g=L.r+3*u;
-    const cands=[[L.x+g,L.y+4*u,"start",L.x+g,L.y-th+4*u],[L.x-g,L.y+4*u,"end",L.x-g-tw,L.y-th+4*u],[L.x,L.y-g-2*u,"middle",L.x-tw/2,L.y-g-th-2*u],[L.x,L.y+g+th,"middle",L.x-tw/2,L.y+g]];
+    const t=L.p[1],tw=(t.length*(M.view==="jer"?7.2:6.5)+4)*u*fsc,th=14*u*fsc,g0=L.r+3*u;
+    const cands=[];
+    [0].forEach(ex=>{const g=g0+ex;
+      cands.push([L.x+g,L.y+4*u,"start",L.x+g,L.y-th+4*u],[L.x-g,L.y+4*u,"end",L.x-g-tw,L.y-th+4*u],[L.x,L.y-g-2*u,"middle",L.x-tw/2,L.y-g-th-2*u],[L.x,L.y+g+th,"middle",L.x-tw/2,L.y+g],
+        [L.x+g*.8,L.y-g*.7,"start",L.x+g*.8,L.y-g*.7-th+3*u],[L.x-g*.8,L.y-g*.7,"end",L.x-g*.8-tw,L.y-g*.7-th+3*u],[L.x+g*.8,L.y+g*.7+th*.8,"start",L.x+g*.8,L.y+g*.7],[L.x-g*.8,L.y+g*.7+th*.8,"end",L.x-g*.8-tw,L.y+g*.7])});
     for(const c of cands){
       const bx=[c[3],c[4],c[3]+tw,c[4]+th];
       if(bx[0]<x0||bx[2]>x0+w||bx[1]<y0||bx[3]>y0+h)continue;
       if(boxes.some(o=>bx[0]<o[2]&&bx[2]>o[0]&&bx[1]<o[3]&&bx[3]>o[1])&&!L.isSel)continue;
       boxes.push(bx);
-      s+='<text x="'+c[0].toFixed(1)+'" y="'+c[1].toFixed(1)+'" text-anchor="'+c[2]+'" class="mp-lab'+(L.isSel?" sel":"")+(L.isHi?"":" dim")+'" style="font-size:'+((M.view==="jer"?13.5:11.5)*u).toFixed(1)+'px;stroke-width:'+(3.5*u).toFixed(1)+'px">'+esc(t)+'</text>';
+      const tx='<text x="'+c[0].toFixed(1)+'" y="'+c[1].toFixed(1)+'" text-anchor="'+c[2]+'" class="mp-lab'+(L.isSel?" sel":"")+(L.isHi?"":" dim")+'" style="font-size:'+((M.view==="jer"?13.5:11.5)*u*fsc).toFixed(1)+'px;stroke-width:3.5px">'+esc(t)+'</text>';
+      if(L.isSel)selOut.push(tx);else s+=tx;
       break;
     }
   });
+  s+=selOut.join("");
   return s+'</svg>';
 }
 function entryOf(n){let r=null;PLACES.forEach(g=>g[1].forEach(p=>{if(p[0]===n)r=p}));return r}
