@@ -42,3 +42,5 @@ Official version: https://freeindeedbible.github.io/free-indeed/
 - Paul's voyage to Rome (Acts 27 and 28) can now be shown on the map from Sidon to Rome, with a new "Syria to Rome" view. Nine places were added (Sidon, Myra, Fair Havens, Clauda, Syracuse, Rhegium, Puteoli, Appii Forum, Three Taverns; positions from OpenBible, one source only; Clauda, Appii Forum and Three Taverns are approximate). The text does not name the port they sailed from or the bay of the wreck, so the map starts at Sidon and says so. Two wording fixes on the voyage page: it no longer says "From Caesarea" (Acts 27:1 to 2 names no port) or "as most scholars agree" for Melita.
 
 - "Where Paul was in prison" now has a map: four numbered places (Philippi, Jerusalem, Caesarea, Rome) in a "Philippi to Rome" view, with no line because it is not one journey.
+
+- "Abraham and Lot" now has a map ("Ur to Egypt" view): Ur, Haran, Shechem, Beth-el, Egypt, back by Beth-el to Hebron, with Sodom as a hollow dot (site not known, no line to it). New places: Shechem, Bethel, Hebron.
