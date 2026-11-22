@@ -33,3 +33,6 @@ Official version: https://freeindeedbible.github.io/free-indeed/
 - Map labels no longer get a huge white halo, sit next to their own dots, and the selected place is always drawn on top. Where a label does not fit, the dot has no label. Tap it to see its name.
 - Troas added to the map (Acts 16, Acts 20, 2 Corinthians 2, 2 Timothy 4). Position checked against five sources.
 - The Dead Sea note now says the outline is today's shape.
+- Paul's first journey (Acts 13 and 14) can be shown on the map: open it under The story > Where it happened and tap "Show this journey on the map". Numbers show the order, a dashed line shows the way back. The lines are straight and approximate, not roads. Eight new places were added (Seleucia, Salamis, Paphos, Perga, Attalia, Iconium, Lystra, Derbe), positions from the OpenBible location data. The Derbe dot is hollow because its exact site is debated.
+- A new map view, Cyprus and Turkey, was added.
+- Fixed: a selected place no longer stays shown under the map when you switch to a view where it is not drawn.
