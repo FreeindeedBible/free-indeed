@@ -29,3 +29,4 @@ Official version: https://freeindeedbible.github.io/free-indeed/
 - Two new reading plans, Scripture only: Who is Jesus (14 readings) and The Cross and the Empty Tomb (13 readings).
 - A Share Free Indeed button on the Start page opens the phone's share menu with the official link only.
 - Lakes show in a proper blue in dark mode.
+- Book and context notes reworded where they ranked books or leaned one church's way (John, Romans, Acts, Galatians, James, 2 Chronicles 7:14, Matthew 18:20 and others), so they say only what the Bible itself says.
