@@ -469,6 +469,20 @@ const PLACES=[
 "The brethren sent Paul and Silas away by night to Berea, where they went into the synagogue of the Jews (Acts 17:10). The people there received the word with all readiness of mind and searched the scriptures daily (17:11). When the Jews of Thessalonica came and stirred up the people, the brethren sent Paul away (17:13 to 14). Sopater of Berea is named in Acts 20:4."],
 ["Cenchrea","Kechries, near Corinth, Greece",
 "Acts 18:18 says Paul sailed into Syria, having shorn his head in Cenchrea because he had a vow. Phebe, a servant of the church at Cenchrea, is named in Romans 16:1."],
+["Assos","Behramkale, near Ayvacık, north-west Turkey",
+"Paul's companions sailed to Assos to take him in there, because he had arranged to go on foot. When he met them at Assos they took him in and came to Mitylene (Acts 20:13 to 14)."],
+["Mitylene","Mytilene, on the Greek island of Lesbos",
+"They came to Mitylene from Assos, then sailed on and the next day came opposite Chios (Acts 20:14 to 15)."],
+["Miletus","Ruins near Balat, western Turkey",
+"The ship came to Miletus. Paul had decided to sail past Ephesus so as not to spend time in Asia, and from Miletus he sent to Ephesus and called the elders of the church (Acts 20:15 to 17). Miletus is named again in 2 Timothy 4:20."],
+["Rhodes","Rhodes, a Greek island. Same name today.",
+"After Coos the next day they came to Rhodes, and from there to Patara (Acts 21:1)."],
+["Patara","Ruins near Gelemiş, southern Turkey",
+"At Patara they found a ship sailing over to Phenicia and went aboard (Acts 21:1 to 2)."],
+["Tyre","Tyre (Sour), southern Lebanon. Same name today.",
+"The ship landed at Tyre, where it was to unlade her burden. Paul found disciples and stayed seven days, and they said to Paul through the Spirit that he should not go up to Jerusalem (Acts 21:3 to 4). Tyre is named in many other places in the Bible, for example Matthew 11:21."],
+["Ptolemais","Akko (Acre), northern Israel",
+"From Tyre they came to Ptolemais, saluted the brethren and stayed with them one day. The next day they came to Caesarea (Acts 21:7 to 8)."],
 ["Ephesus","Near Selçuk, western Turkey",
 "Paul stayed about three years (Acts 20:31). One of the seven churches of Revelation."],
 ["The seven churches of Revelation","Western Turkey",
@@ -501,7 +515,7 @@ const COAST={wide:"M891 -3389l14 0l10 11l-13 9l-10 -3l-3 -2l2 -15zM933 -3482l2 7
 /* views: [label, west, east, south, north] in degrees */
 const VIEWS={wide:["Bible lands",9,52,25,43,"wide"],holy:["Holy Land",33.9,36.4,31.0,33.4,"det"],jer:["Jerusalem",35.15,35.33,31.68,31.82,"det"],aegean:["Greece and Turkey",19.4,32.6,34.2,42.3,"aeg"],east:["Mesopotamia",38.0,50.0,29.6,40.6,"wide"],tur1:["Cyprus and Turkey",29.8,37.0,34.3,38.9,"wide","wide"],tur2:["Syria to Greece",19.8,37.0,31.4,42.0,"wide","wide"]};
 /* journey routes: stops in order (a place id, or [lat,lon] for a bend over the sea); out = the way there, back = the way back */
-const ROUTES={"Paul's second journey (Acts 15:36 to 18:22)":{view:"tur2",out:["antiochs","derbe","lystra","iconium","troas","neapolis","philippi","amphipolis","thessalonica","berea","athens","corinth"],back:["corinth","cenchrea","ephesus",[36.6,27.0],[35.4,29.0],"caesarea",[34.0,34.9],[35.6,35.6],"antiochs"],note:"Numbers show the order on the way out (Acts 15:41 to 18:1). The dashed line is the way back (Acts 18:18 to 22). The Bible names no cities between Lystra and Troas (Phrygia, Galatia and Mysia, 16:6 to 8), so that part of the line is only a straight guide. Acts 18:22 says Paul landed at Caesarea, went up and saluted the church, then went down to Antioch. It does not name the city he went up to."},"Paul's first journey (Acts 13 and 14)":{view:"tur1",out:["antiochs","seleucia","salamis","paphos","perga","antiochp","iconium","lystra","derbe"],back:["derbe","lystra","iconium","antiochp","perga","attalia",[35.8,32.9],"antiochs"],note:"Numbers show the order on the way out (Acts 13:4 to 14:6, 14:20). The dashed line is the way back (Acts 14:21 to 26)."}};
+const ROUTES={"Paul's third journey (Acts 18:23 to 21:17)":{view:"tur2",out:["antiochs","ephesus","philippi","troas","assos","mitylene","miletus","rhodes","patara",[34.2,32.5],"tyre","ptolemais","caesarea","jerusalem"],back:[],note:"Numbers show the order of the stops (Acts 18:23 to 21:17). The Bible names no cities for Galatia and Phrygia (18:23) or for Macedonia and Greece (20:1 to 3), so those lines are only straight guides. Chios, Samos, Trogyllium and Coos (20:15; 21:1) are named in the text but not drawn."},"Paul's second journey (Acts 15:36 to 18:22)":{view:"tur2",out:["antiochs","derbe","lystra","iconium","troas","neapolis","philippi","amphipolis","thessalonica","berea","athens","corinth"],back:["corinth","cenchrea","ephesus",[36.6,27.0],[35.4,29.0],"caesarea",[34.0,34.9],[35.6,35.6],"antiochs"],note:"Numbers show the order on the way out (Acts 15:41 to 18:1). The dashed line is the way back (Acts 18:18 to 22). The Bible names no cities between Lystra and Troas (Phrygia, Galatia and Mysia, 16:6 to 8), so that part of the line is only a straight guide. Acts 18:22 says Paul landed at Caesarea, went up and saluted the church, then went down to Antioch. It does not name the city he went up to."},"Paul's first journey (Acts 13 and 14)":{view:"tur1",out:["antiochs","seleucia","salamis","paphos","perga","antiochp","iconium","lystra","derbe"],back:["derbe","lystra","iconium","antiochp","perga","attalia",[35.8,32.9],"antiochs"],note:"Numbers show the order on the way out (Acts 13:4 to 14:6, 14:20). The dashed line is the way back (Acts 14:21 to 26)."}};
 /* pins: id, short label, lat, lon, kind (t town, w water, m mountain, a approximate), entry name in PLACES, name in the Bible, name today (override), regex, tweak */
 const PINS=[
 ["jerusalem","Jerusalem",31.778,35.2345,"t","Jerusalem","Jerusalem. Also called Salem (Psalm 76:2), Zion and the city of David (2 Samuel 5:7).","Jerusalem (Yerushalayim in Hebrew, al-Quds in Arabic)",/\bJerusalem\b/],
@@ -546,6 +560,13 @@ const PINS=[
 ["amphipolis","Amphipolis",40.820,23.847,"t","Amphipolis","Amphipolis (Acts 17:1)","Near the village of Amfipoli, northern Greece",/\bAmphipolis\b/],
 ["berea","Berea",40.518,22.200,"t","Berea","Berea (Acts 17:10)","Veria, northern Greece",/\bBerea\b/],
 ["cenchrea","Cenchrea",37.884,22.997,"t","Cenchrea","Cenchrea (Acts 18:18)","Kechries, near Corinth, Greece",/\bCenchrea\b/],
+["assos","Assos",39.4906,26.3367,"t","Assos","Assos (Acts 20:13)","Behramkale, near Ayvacık, north-west Turkey",/\bAssos\b/],
+["mitylene","Mitylene",39.1105,26.547,"t","Mitylene","Mitylene (Acts 20:14)","Mytilene, on the Greek island of Lesbos",/\bMitylene\b/],
+["miletus","Miletus",37.5311,27.2756,"t","Miletus","Miletus (Acts 20:15)","Ruins near Balat, western Turkey",/\bMilet(?:us|um)\b/],
+["rhodes","Rhodes",36.4402,28.2109,"t","Rhodes","Rhodes (Acts 21:1)","Rhodes, a Greek island. Same name today.",/\bRhodes\b/],
+["patara","Patara",36.2603,29.3142,"t","Patara","Patara (Acts 21:1)","Ruins near Gelemiş, southern Turkey",/\bPatara\b/],
+["tyre","Tyre",33.2708,35.1961,"t","Tyre","Tyre (Acts 21:3)","Tyre (Sour), southern Lebanon. Same name today.",/\bTyre\b/],
+["ptolemais","Ptolemais",32.9214,35.0692,"t","Ptolemais","Ptolemais (Acts 21:7)","Akko (Acre), northern Israel",/\bPtolemais\b/],
 ["ephesus","Ephesus",37.9411,27.3419,"t","Ephesus","Ephesus (Acts 19:1), in the province of Asia","Ruins near the town of Selcuk, western Turkey",/\bEphesus\b|\bEphesians\b/],
 ["troas","Troas",39.7517,26.1586,"t","Troas","Troas (Acts 16:8)","Ruins of Alexandria Troas, near the village of Dalyan, north-west Turkey",/\bTroas\b/],
 ["smyrna","Smyrna",38.42,27.14,"t","The seven churches of Revelation","Smyrna (Revelation 1:11)","Izmir, western Turkey",/\bSmyrna\b/],
@@ -969,8 +990,8 @@ function mapSvg(){
   const RT=M.route&&ROUTES[M.route]?ROUTES[M.route]:null,RNUM={};
   if(RT){
     const rp=l=>l.map(q=>typeof q==="string"?(()=>{const m=MPH[q];return pt(m[2],m[3])})():pt(q[0],q[1])).join("L");
-    RT.out.forEach((id,i)=>{RNUM[id]=i+1});
-    s+='<path d="M'+rp(RT.out)+'" class="mp-routeb"/><path d="M'+rp(RT.back)+'" class="mp-routeb"/><path d="M'+rp(RT.back)+'" class="mp-route bk"/><path d="M'+rp(RT.out)+'" class="mp-route"/>';
+    let rn=0;RT.out.forEach(id=>{if(typeof id==='string')RNUM[id]=++rn});
+    const hb=RT.back&&RT.back.length>1;s+='<path d="M'+rp(RT.out)+'" class="mp-routeb"/>'+(hb?'<path d="M'+rp(RT.back)+'" class="mp-routeb"/><path d="M'+rp(RT.back)+'" class="mp-route bk"/>':'')+'<path d="M'+rp(RT.out)+'" class="mp-route"/>';
   }
   const hi=M.hi?new Set(M.hi):null,boxes=[],labs=[];
   REGIONS.forEach((r,i)=>{if(r[5].indexOf(M.view)<0)return;const q=mproj(r[1],r[2]);const rid="R"+i,on=M.sel===rid;
@@ -1212,7 +1233,7 @@ document.addEventListener("click",async e=>{
   if(a==="mapopen"){await openMap()}
   else if(a==="goback"){const r=S.ret;if(r){S.pas=null;S.foc=null;S.ret=null;ST.set("ret",null);S.b=r.b;S.c=r.c;S.sess=r.sess;S.tab="read";ST.set("tab","read");S.view="chapter";await render();window.scrollTo(0,r.y||0)}}
   else if(a==="mpv"){MAPST.view=el.dataset.v;const sp=MPH[MAPST.sel];if(sp&&!inView(sp,MAPST.view))MAPST.sel=null;updateMap()}
-  else if(a==="mproute"){const n=el.dataset.r;if(n&&ROUTES[n]){const R=ROUTES[n],ids=[];R.out.forEach(i=>{if(ids.indexOf(i)<0)ids.push(i)});R.back.forEach(i=>{if(typeof i==="string"&&ids.indexOf(i)<0)ids.push(i)});MAPST={view:R.view,sel:null,hi:ids,nodot:null,route:n};updateMap();const mb=$("#mapbox");if(mb)mb.scrollIntoView({behavior:"smooth",block:"start"})}else{MAPST.route=null;MAPST.hi=null;MAPST.sel=null;updateMap()}}
+  else if(a==="mproute"){const n=el.dataset.r;if(n&&ROUTES[n]){const R=ROUTES[n],ids=[];R.out.forEach(i=>{if(typeof i==="string"&&ids.indexOf(i)<0)ids.push(i)});R.back.forEach(i=>{if(typeof i==="string"&&ids.indexOf(i)<0)ids.push(i)});MAPST={view:R.view,sel:null,hi:ids,nodot:null,route:n};updateMap();const mb=$("#mapbox");if(mb)mb.scrollIntoView({behavior:"smooth",block:"start"})}else{MAPST.route=null;MAPST.hi=null;MAPST.sel=null;updateMap()}}
   else if(a==="mpsel"){const id=el.dataset.id;MAPST.sel=MAPST.sel===id?null:id;if(MPH[id]&&!inView(MPH[id],MAPST.view))MAPST.view=bestView([id]);updateMap()}
   else if(a==="book"){S.b=+el.dataset.b;S.view="chapters";await load(S.ver);CH_COUNT=CH_COUNT||TXT[S.ver].map(b=>b.length);render();window.scrollTo(0,0)}
   else if(a==="books"){S.view="books";render()}
