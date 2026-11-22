@@ -27,3 +27,5 @@ Official version: https://freeindeedbible.github.io/free-indeed/
 - A "New here? Start here" card sits at the top of Today until it has been opened twice. After that it lives in the Go to tiles. The six Go to tiles have soft colours.
 - The Jerusalem map has a soft, clearer look. The map footnote is updated.
 - Two new reading plans, Scripture only: Who is Jesus (14 readings) and The Cross and the Empty Tomb (13 readings).
+- A Share Free Indeed button on the Start page opens the phone's share menu with the official link only.
+- Lakes show in a proper blue in dark mode.
